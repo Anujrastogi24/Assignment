@@ -1,68 +1,68 @@
-# CodeIgniter 4 Application Starter
+# Device Data Dashboard - MBRT Visualization
 
-## What is CodeIgniter?
+## Overview
+This project is a **Device Data Dashboard** built using **CodeIgniter 4**, which allows users to visualize **(MBRT)** data. The project provides functionality to view MBRT averages over daily, weekly, and monthly intervals, as well as custom date ranges. The dashboard is responsive and includes interactive bar charts to represent the data.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Implementation
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+### First Implement 
+Make an default page or rendering page using Atlantis Lite(BS4) dashboard-1
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+### Second Implement 
+Implement HMVC architecture in Modules folder which have an User and Admin for testing purpose.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+### Import csv data in Database
+Using PGadmin3 run query to make an table (temp_data) and relevant columns with appropriate DataTypes then use import tool to direct import data from csv with the header.
 
-## Installation & updates
+### Implement Bar Graph using Chart.js
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+### Add Function for Custom Date Range Selection
+Users can select a custom start and end date. Upon selection, the data is fetched and the chart is updated accordingly.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
 
-## Setup
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
 
-## Important Change with index.php
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## Features
+- **Daily, Weekly, Monthly Views**: View MBRT data for specific time periods.
+- **Custom Date Range**: Select a custom start and end date to view MBRT data.
+- **Responsive Design**: Fully responsive design using Bootstrap 5.
+- **Interactive Charts**: Bar charts to visualize MBRT data interactively.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Technologies Used
+- **Backend**: CodeIgniter 4 (PHP)
+- **Frontend**: HTML, CSS (Bootstrap 5), JavaScript
+- **Database**: PostgreSQL
+- **API Requests**: Fetch API, AJAX
+- **Version Control**: Git
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## System Architecture
+The system consists of:
+1. **Frontend**: User interface for displaying interactive MBRT data charts.
+2. **Backend**: CodeIgniter 4 APIs that fetch MBRT data from the PostgreSQL database.
+3. **Database**: PostgreSQL stores device data with timestamps and MBRT values.
 
-## Repository Management
+## Installation and Setup
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/yourusername/your-repo-name.git
+    ```
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+2. **Install Composer Dependencies**:
+    ```bash
+    composer install
+    ```
 
-## Server Requirements
+3. **Database Configuration**:
+   - Set up PostgreSQL and update your `.env` file with database credentials.
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+4. **Run Migrations**:
+    ```bash
+    php spark migrate
+    ```
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+5. **Start the Server**:
+    ```bash
+    php spark serve
+    ```
